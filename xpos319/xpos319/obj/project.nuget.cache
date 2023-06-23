@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jrp59IDM+XoxmqvAvuq16EqT91ngnS4mfxNx5XLeX8CWBg8ziru7q0ramdrA4hKTP7+g2T3gMzKBw5PjiliAig==",
+  "success": true,
+  "projectFilePath": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\xpos319.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\XSIS User\\.nuget\\packages\\bootstrap\\5.3.0\\bootstrap.5.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}
