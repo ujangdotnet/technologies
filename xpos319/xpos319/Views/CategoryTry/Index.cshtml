@@ -27,9 +27,9 @@
                     <td>@item.NameCategory</td>
                     <td>@item.Description</td>
                     <td>
-                        <a class="btn btn-primary" asp-controller="CategoryTry" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-secondary" asp-controller="CategoryTry" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
-                        <a class="btn btn-danger" asp-controller="CategoryTry" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-primary btn_edit" data-id="@item.Id">Edit</a>
+                        <a class="btn btn-secondary btn_detail" data-id="@item.Id">Detail</a>
+                        <a class="btn btn-danger btn_delete" data-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }
@@ -42,6 +42,30 @@
     $("#test").click(function () {
         $(".modal-body").empty()
         $(".modal-body").load("CategoryTry/Create")
-        $(".modal").modal("show")
+        $(".modal").modal("show") //show disini adalah bawaan dari jquery
     });
+
+    $(".btn_edit").click(function(){
+        var id = $(this).data("id")
+
+        $(".modal-body").empty()
+        $(".modal-body").load("CategoryTry/Edit?id=" + id)
+        $(".modal").modal("show")
+    })
+
+    $(".btn_detail").click(function () {
+        var id = $(this).data("id")
+
+        $(".modal-body").empty()
+        $(".modal-body").load("CategoryTry/Detail?id=" + id)
+        $(".modal").modal("show")
+    })
+
+    $(".btn_delete").click(function () {
+        var id = $(this).data("id")
+
+        $(".modal-body").empty()
+        $(".modal-body").load("CategoryTry/Delete?id=" + id)
+        $(".modal").modal("show")
+    })
 </script>

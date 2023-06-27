@@ -1,0 +1,17 @@
+﻿@using xpos319.viewmodels;
+@model VMTblCategory;
+@{
+	Layout = null;
+	ViewData["Title"] = "Delete Page";
+}
+
+<div>
+	<h3>Apa anda yakin mau delete ini ?</h3>
+</div>
+<div class="modal-footer">
+	<form asp-action="Delete" method="post">
+	<input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Delete</button>
+    <a type="button" asp-controller="CategoryTry" asp-action="Index" class="btn btn-primary">Cancel</a>
+	</form>
+</div>
