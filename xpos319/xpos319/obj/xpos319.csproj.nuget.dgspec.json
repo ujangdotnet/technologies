@@ -4,6 +4,134 @@
     "C:\\BATCH_319\\technology\\xpos319\\xpos319\\xpos319.csproj": {}
   },
   "projects": {
+    "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\xpos319.datamodels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\xpos319.datamodels.csproj",
+        "projectName": "xpos319.datamodels",
+        "projectPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\xpos319.datamodels.csproj",
+        "packagesPath": "C:\\Users\\XSIS User\\.nuget\\packages\\",
+        "outputPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\XSIS User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.19, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.19, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj",
+        "projectName": "xpos319.viewmodels",
+        "projectPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj",
+        "packagesPath": "C:\\Users\\XSIS User\\.nuget\\packages\\",
+        "outputPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\XSIS User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\BATCH_319\\technology\\xpos319\\xpos319\\xpos319.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -28,7 +156,14 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\xpos319.datamodels.csproj": {
+                "projectPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.datamodels\\xpos319.datamodels.csproj"
+              },
+              "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj": {
+                "projectPath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,9 +176,29 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "bootstrap": {
+            "AutoMapper": {
               "target": "Package",
-              "version": "[5.3.0, )"
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.19, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.19, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.19, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.14, )"
             }
           },
           "imports": [

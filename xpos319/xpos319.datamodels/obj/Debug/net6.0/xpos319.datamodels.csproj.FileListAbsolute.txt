@@ -1,0 +1,14 @@
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\bin\Debug\net6.0\xpos319.datamodels.deps.json
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\bin\Debug\net6.0\xpos319.datamodels.runtimeconfig.json
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\bin\Debug\net6.0\xpos319.datamodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\bin\Debug\net6.0\xpos319.datamodels.pdb
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.csproj.AssemblyReference.cache
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.GeneratedMSBuildEditorConfig.editorconfig
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.AssemblyInfoInputs.cache
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.AssemblyInfo.cs
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.csproj.CoreCompileInputs.cache
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\refint\xpos319.datamodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.pdb
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\xpos319.datamodels.genruntimeconfig.cache
+C:\BATCH_319\technology\xpos319\xpos319.datamodels\obj\Debug\net6.0\ref\xpos319.datamodels.dll

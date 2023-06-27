@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "THQ8uPWOJtycv7E8NF6bznVfi9A94fKwfRUZ6VDwYyP7tDUAFsNS967JEj0mcKK0v6tgjjUpspqtK/LLTgjW6w==",
+  "success": true,
+  "projectFilePath": "C:\\BATCH_319\\technology\\xpos319\\xpos319.viewmodels\\xpos319.viewmodels.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\XSIS User\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\XSIS User\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\XSIS User\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -5,7 +5,7 @@ namespace xpos319.Controllers
 {
     public class FriendController : Controller
     {
-
+        //data dummy
         private static List<Friend> friends = new List<Friend>(){
             new Friend(){Id=1,Name="Razwan",Address="Landan"},
             new Friend(){Id=2,Name="Rizwin",Address="Lindin"},
@@ -13,20 +13,14 @@ namespace xpos319.Controllers
 
             };
 
-
+        //default view
         public IActionResult Index()
         {
-            //List<Friend> friends = new List<Friend>(){ 
-            //new Friend(){Id=1,Name="Razwan",Address="Landan"},
-            //new Friend(){Id=2,Name="Rizwin",Address="Lindin"},
-            //new Friend(){Id=3,Name="Ruzwun",Address="Lundun"},
-
-            //};
             return View(friends);
             //atau dengan Viewbag.[nama-bag] = [nama variabel list]
-
         }
 
+        //create data
         public IActionResult Create()
         {
             return View();
@@ -39,8 +33,10 @@ namespace xpos319.Controllers
             return RedirectToAction("Index");
         }
 
+        //edit data
         public IActionResult Edit(int id)
         {
+            //memanggil data models
             Friend friend = friends.Find(a => a.Id == id);
             return View(friend);
         }
@@ -56,6 +52,31 @@ namespace xpos319.Controllers
                 friends[index].Name = data.Name;
                 friends[index].Address = data.Address;
             }
+
+            return RedirectToAction("Index");
+        }
+
+        //detail data (sudah auto [httpget])
+        public IActionResult Detail(int id)
+        {
+            Friend frien = friends.Find(a => a.Id == id);
+            return View(frien);
+        }
+
+        //delete data
+  
+        public IActionResult Delete(int id)
+        {
+            Friend frien = friends.Find(a => a.Id == id);
+            return View(frien);
+            //return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Friend data)
+        {
+            Friend frien = friends.Find(a => a.Id == data.Id);
+            friends.Remove(frien);
 
             return RedirectToAction("Index");
         }

@@ -30,8 +30,8 @@
                     <td>@item.Address</td>
                     <td>
                         <a class="btn btn-primary" asp-controller="Friend" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-secondary">Detail</a>
-                        <a class="btn btn-danger">Delete</a>
+                        <a class="btn btn-secondary" asp-controller="Friend" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+                        <a class="btn btn-danger" asp-controller="Friend" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }

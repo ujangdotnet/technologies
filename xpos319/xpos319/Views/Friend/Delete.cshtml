@@ -1,0 +1,15 @@
+﻿@model Friend
+@{
+	ViewData["Title"] = "Delete Data";
+}
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	<form action="Delete" method="post">
+	<input type="hidden" class="form-control" id="Id" name="Id" value="@Model.Id" />
+	<h4 class="alert-heading">Are you sure to delete data?</h4>
+		<div class="btn-group" role="group" aria-label="Basic example">
+			<button type="submit" class="btn btn-primary">Yes</button>
+			<button class="btn btn-secondary" asp-controller="Friend" asp-action="Index">No</button>
+		</div>
+	</form>
+</div>

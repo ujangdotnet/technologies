@@ -1,0 +1,12 @@
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\bin\Debug\net6.0\xpos319.viewmodels.deps.json
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\bin\Debug\net6.0\xpos319.viewmodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\bin\Debug\net6.0\xpos319.viewmodels.pdb
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.csproj.AssemblyReference.cache
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.GeneratedMSBuildEditorConfig.editorconfig
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.AssemblyInfoInputs.cache
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.AssemblyInfo.cs
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.csproj.CoreCompileInputs.cache
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\refint\xpos319.viewmodels.dll
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\xpos319.viewmodels.pdb
+C:\BATCH_319\technology\xpos319\xpos319.viewmodels\obj\Debug\net6.0\ref\xpos319.viewmodels.dll
