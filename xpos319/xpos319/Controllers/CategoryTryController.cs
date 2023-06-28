@@ -11,7 +11,7 @@ namespace xpos319.Controllers
 		private readonly XPOS_319Context db;
 		private readonly CategoryTryService categoryTryService;
 
-		public CategoryTryController(XPOS_319Context _db)
+		public CategoryTryController(XPOS_319Context _db) //constructor ini buat apa ?
 		{
 			this.db = _db;
 			this.categoryTryService = new CategoryTryService(db);

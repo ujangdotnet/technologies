@@ -27,6 +27,8 @@ namespace xpos319.Services
 
             return mapper;
         }
+
+        //method manggil data
         public List<VMTblCategory> GetAllData() //fungsi ini buat apa ?
         {
             List<TblCategory> dataModel = db.TblCategories.Where(a => a.IsDelete == false).ToList();
@@ -36,6 +38,7 @@ namespace xpos319.Services
             return dataView;
         }
 
+        //method create
         public VMResponse Create(VMTblCategory dataView)
         {
 

@@ -4,84 +4,81 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - xpos319</title>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/xpos319.styles.css" asp-append-version="true" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/adminmart/assets/images/favicon.png">
+    <script src="~/adminmart/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="~/adminmart/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="~/adminmart/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/adminmart/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/adminmart/dist/css/style.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">xpos319</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Friend" asp-action="Index">Friend</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CategoryTry" asp-action="Index">Category Try</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+
+         <partial name="_Header" />
+         <partial name="_Sidebar" />
+   
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+            <footer class="footer text-center text-muted">
+                All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+            
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - xpos319 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    <!-- Modal -->
-    @*<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+    <div class="modal fade" id="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                  di isi oleh view modal
-                </div>
-            </div>
-        </div>
-    </div>
-    *@
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">@ViewData["Title"]</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modal_body">
                     ...
                 </div>
+          
             </div>
         </div>
     </div>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/adminmart/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/adminmart/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="~/adminmart/dist/js/app-style-switcher.js"></script>
+    <script src="~/adminmart/dist/js/feather.min.js"></script>
+    <script src="~/adminmart/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/adminmart/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/adminmart/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="~/adminmart/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/adminmart/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/adminmart/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/adminmart/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/adminmart/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/adminmart/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/adminmart/dist/js/pages/dashboards/dashboard1.min.js"></script>
 </body>
 </html>

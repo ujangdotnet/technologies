@@ -252,3 +252,4 @@ C:\BATCH_319\technology\xpos319\xpos319\bin\Debug\net6.0\xpos319.datamodels.dll
 C:\BATCH_319\technology\xpos319\xpos319\bin\Debug\net6.0\xpos319.viewmodels.dll
 C:\BATCH_319\technology\xpos319\xpos319\bin\Debug\net6.0\xpos319.datamodels.pdb
 C:\BATCH_319\technology\xpos319\xpos319\bin\Debug\net6.0\xpos319.viewmodels.pdb
+C:\BATCH_319\technology\xpos319\xpos319\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout Old.cshtml.rz.scp.css
