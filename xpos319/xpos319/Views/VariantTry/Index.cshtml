@@ -139,8 +139,35 @@
 
 <script>
     $("#btn_create").click(function(){
-        $("#modal_body").empty()
-        $("#modal_body").load("/VariantTry/Create")
-        $("#modal").modal("show")
+        $("#modal_body").empty();
+        $("#modal_body").load("/VariantTry/Create");
+        $("#modal").modal("show");
+    })
+
+    //atur jquery untuk button edit
+    $(".btn_edit").click(function(){
+        var id = $(this).data("id"); //this tersebut memanggil elemennya sendiri
+
+        $("#modal_body").empty();
+        $("#modal_body").load("VariantTry/Edit?id=" + id);
+        $("#modal").modal("show");
+    })
+
+    //jquery utk button detail
+    $(".btn_detail").click(function () {
+        var id = $(this).data("id"); //this tersebut memanggil elemennya sendiri
+
+        $("#modal_body").empty();
+        $("#modal_body").load("VariantTry/Detail?id=" + id);
+        $("#modal").modal("show");
+    })
+
+    //jquery utk button delete
+    $(".btn_delete").click(function(){
+        var id = $(this).data("id");
+
+        $("#modal_body").empty();
+        $("#modal_body").load("VariantTry/Delete?id=" + id);
+        $("#modal").modal("show");
     })
 </script>

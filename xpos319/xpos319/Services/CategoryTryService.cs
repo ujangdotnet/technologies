@@ -125,28 +125,6 @@ namespace xpos319.Services
 
             return respon;
 
-			//dataModel.NameCategory = dataView.NameCategory;
-			//dataModel.Description = dataView.Description;
-			//dataModel.UpdateBy = IdUser; 
-			//dataModel.UpdateDate = DateTime.Now;
-
-			//try
-			//{
-			//	db.Remove(dataModel); //fuction update darimana ?
-			//	db.SaveChanges(); //fuction save changes darimana ?
-
-			//	respon.Message = "Data Success removed";
-			//	respon.Entity = GetMapper().Map<VMTblCategory>(dataModel); //fuction getmapper() darimana ?
-
-			//}
-			//catch (Exception e)
-			//{
-			//	respon.Success = false;
-			//	respon.Message = "Failed removed: " + e.Message;
-			//	respon.Entity = GetMapper().Map<VMTblCategory>(dataModel);
-			//}
-
-			//return respon;
 		}
 	}
 }

@@ -97,5 +97,66 @@ namespace xpos319.Controllers
             respon.Entity = dataView;
             return View(respon.Entity);
         }
-    }
+
+        //method controler edit
+        public IActionResult Edit(int id)
+        {
+            VMTblVariant dataView = variantTryService.GetById(id);
+            ViewBag.dropDownCat = categoryTryService.GetAllData();
+
+            return View(dataView);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(VMTblVariant dataView)
+        {
+            VMResponse respon = new VMResponse();
+
+            if (ModelState.IsValid)
+            {
+                respon = variantTryService.Edit(dataView);
+
+                if (respon.Success)
+                {
+                    return RedirectToAction("Index", page);
+                }
+            }
+
+            ViewBag.dropDownCat = categoryTryService.GetAllData();
+            respon.Entity = dataView;
+            return View(respon.Entity);
+        }
+
+        //detail
+        public IActionResult Detail(int id)
+        {
+            VMTblVariant dataView = variantTryService.GetById(id);
+
+            return View(dataView);
+        }
+
+		//delete
+		//menampilkan UI
+		public IActionResult Delete(int id)
+		{
+			VMTblVariant dataView = variantTryService.GetById(id);
+
+			return View(dataView);
+		}
+
+        [HttpPost]
+		public IActionResult Delete(VMTblVariant dataView)
+		{
+			VMResponse respon = new VMResponse();
+
+            respon = variantTryService.Delete(dataView);
+            if (respon.Success)
+            {
+                return RedirectToAction("Index", page);
+            }
+
+			return View(respon.Entity);
+		}
+
+	}
 }

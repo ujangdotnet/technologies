@@ -84,6 +84,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFyaWFudFRyeVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/BATCH_319/technology/xpos319/xpos319/Views/VariantTry/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFyaWFudFRyeVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BATCH_319/technology/xpos319/xpos319/Views/VariantTry/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFyaWFudFRyeVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/BATCH_319/technology/xpos319/xpos319/Views/VariantTry/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFyaWFudFRyeVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/BATCH_319/technology/xpos319/xpos319/Views/VariantTry/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFyaWFudFRyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
