@@ -114,7 +114,7 @@
                                asp-route-pageNumber="@(Model.PageIndex - 1)"
                                asp-route-currentFilter="@ViewBag.CurrentFilter"
                                asp-route-showData="@ViewBag.currentShowData"
-                               class="btn btn-primary @prevDisabled">
+                               class="btn btn-primary @prevDisabled"> 
                                 Previous
                             </a>
                             <a asp-action="Index"
@@ -169,5 +169,23 @@
         $("#modal_body").empty();
         $("#modal_body").load("VariantTry/Delete?id=" + id);
         $("#modal").modal("show");
+    })
+
+    //xxx
+    $("#btn_search").click(function () {
+        $("#sort_change").val("@ViewBag.CurrentSort")
+        $("#form_search").submit()
+    })
+
+    $("#btn_reset").click(function () {
+        $("#searchString").val("")
+        $("#form_search").submit()
+    })
+
+    $("#select_show").val(@ViewBag.currentShowData)
+
+    $("#select_show").change(function () {
+        $("#sort_change").val("@ViewBag.CurrentSort")
+        $("#form_search").submit()
     })
 </script>
