@@ -2361,6 +2361,22 @@
       "PackagePath": "staticwebassets\\adminmart\\dist\\js\\sidebarmenu.min.js"
     },
     {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\plugins\\toastr\\toastr.css",
+      "PackagePath": "staticwebassets\\adminmart\\plugins\\toastr\\toastr.css"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\plugins\\toastr\\toastr.js.map",
+      "PackagePath": "staticwebassets\\adminmart\\plugins\\toastr\\toastr.js.map"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\plugins\\toastr\\toastr.min.css",
+      "PackagePath": "staticwebassets\\adminmart\\plugins\\toastr\\toastr.min.css"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\plugins\\toastr\\toastr.min.js",
+      "PackagePath": "staticwebassets\\adminmart\\plugins\\toastr\\toastr.min.js"
+    },
+    {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

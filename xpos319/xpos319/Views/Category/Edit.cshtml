@@ -1,0 +1,118 @@
+﻿@using xpos319.datamodels;
+@model TblCategory
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="h4 mb-4">Edit category</div>
+<div>
+    <form asp-action="Edit" method="post" id="form_input">
+
+        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+
+        <div class="mb-4 row">
+            <label for="NameCategory" class="col-sm-2 col-form-label">Name Category</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="NameCategory" name="NameCategory" value="@Model.NameCategory">
+                <span id="validate_NameCategory" class="text-danger"></span>
+
+            </div>
+        </div>
+
+        <div class="mb-4 row">
+            <label for="Description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="Description" name="Description">@Model.Description</textarea>
+
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-light" asp-controller="CategorySesungguhnya" asp-action="Index">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#form_input").validate({
+        errorClass: "text-danger",
+        rules: {
+            NameCategory: {
+                required: true,
+                minlength: 5,
+            }
+        },
+        messages: {
+            NameCategory: {
+                required: "Tolong isi Nama",
+                minlength: "Tolong Lebih Dari 5",
+
+            }
+        },
+        submitHandler: function (form) {
+            //console.log('tes')
+            var dataForm = $(form).serialize()
+            //debugger //Buat mendibug
+            var nameCategory = $("#NameCategory").val()
+            var Id = $("#Id").val()
+
+            $.ajax({
+                url: "/Category/CheckNameIsExist",
+                type: "get",
+                //method : "get",
+                data: { nameCategory: nameCategory, Id: Id },
+                dataType: "json",
+                success: function (respon) {
+                    if (respon) {
+                        $("#validate_NameCategory").text("Nama Category Sudah Ada")
+                        return true;
+
+                    }
+                    else {
+
+                        fungsiSubmit(dataForm)
+                    }
+                }
+
+            })
+        }
+
+    })
+
+    function fungsiSubmit(dataParam) {
+        $.ajax({
+            url: '/Category/Edit',
+            type: "post",
+            data: dataParam,
+            dataType: "json",
+            success: function (respon) {
+                var data = respon.dataRespon
+                if (data.success) {
+                    $("#modal").modal("hide")
+
+                    toastr.success(
+                        data.message,
+                        '',
+                        {
+                            timeOut: 1000,
+                            fadeOut: 1000,
+                            onHidden: function () {
+                                window.location.reload()
+                            }
+                        }
+                    )
+                }
+                else {
+                    toastr.errorClass(data.message)
+                }
+            }
+        })
+    }
+
+</script>

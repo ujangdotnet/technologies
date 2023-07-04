@@ -18,12 +18,12 @@
                         <div class="input-group w-100">
                             <input type="text" name="searchString" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Search..">
                             <div class="input-group-prepend">
-                                <button type="submit" class="input-group-text" title="search">
+                                <button type="submit" class="input-group-text" title="search" id="btn_search">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
                             <div class="input-group-prepend">
-                                <a class="input-group-text" asp-action="Index" title="reset">
+                                <a class="input-group-text" asp-action="Index" title="reset" id="btn_reset">
                                     <i class="fas fa-redo"></i>
                                 </a>
                             </div>
@@ -128,6 +128,31 @@
     $("#btn_create").click(function(){
         $("#modal_body").empty()
         $("#modal_body").load("Category/Create")
+        $("#modal").modal("show")
+    })
+
+    $(".btn_edit").click(function () {
+        var id = $(this).attr("dataid")
+        //alert(id)
+        $("#modal_body").empty()
+        $("#modal_body").load("/Category/Edit?id=" + id)
+        $("#modal").modal("show")
+    })
+
+    $(".btn_detail").click(function () {
+        var id = $(this).attr("dataid")
+
+        $("#modal_body").empty()
+        $("#modal_body").load("/Category/Detail?id=" + id)
+        $("#modal").modal("show")
+    })
+
+
+    $(".btn_delete").click(function () {
+        var id = $(this).attr("dataid")
+        //alert(id)
+        $("#modal_body").empty()
+        $("#modal_body").load("/Category/Delete?id=" + id)
         $("#modal").modal("show")
     })
 </script>

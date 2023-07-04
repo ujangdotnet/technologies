@@ -33,12 +33,21 @@ namespace xpos319.api.Controllers
 			return result;
 		}
 
-		[HttpGet("CheckCategoryByName/{name}")]
-		public bool CheckName(string name)
+		[HttpGet("CheckCategoryByName/{name}/{id}")]
+		public bool CheckName(string name, int id)
 		{
-			TblCategory data = db.TblCategories.Where(a => a.NameCategory == name).FirstOrDefault();
+			TblCategory data = new TblCategory();
 
-			if(data != null)
+			if (id == 0)
+			{
+				data = db.TblCategories.Where(a => a.NameCategory == name && a.IsDelete == false).FirstOrDefault();
+			}
+			else
+			{
+				data = db.TblCategories.Where(a => a.NameCategory == name && a.IsDelete == false && a.Id != id).FirstOrDefault();
+			}
+
+			if (data != null)
 			{
 				return true;
 			}
@@ -46,16 +55,17 @@ namespace xpos319.api.Controllers
 			return false;
 		}
 
-		[HttpPost("Save")]
+        [HttpPost("Save")]
 		public VMResponse Save(TblCategory data)
 		{
+			data.Description = data.Description ?? "";
 			data.CreateBy = IdUser;
 			data.CreateDate = DateTime.Now;
 			data.IsDelete = false;
 
 			try
 			{
-				db.Add(data);
+				db.Add(data); 
 				db.SaveChanges();
 
 				respon.Message = "Data success saved";
@@ -77,7 +87,7 @@ namespace xpos319.api.Controllers
 			if(dt != null)
 			{
 				dt.NameCategory = data.NameCategory;
-				dt.Description = data.Description;
+				dt.Description = data.Description ?? "";
 				dt.UpdateBy = IdUser;
 				dt.UpdateDate = DateTime.Now;
 
@@ -120,7 +130,7 @@ namespace xpos319.api.Controllers
 					db.Update(dt);
 					db.SaveChanges();
 
-					respon.Message = $"data {dt.NameCategory} success delete";
+					respon.Message = $"data {dt.NameCategory} success deleted";
 				}
 				catch (Exception e)
 				{
@@ -136,5 +146,6 @@ namespace xpos319.api.Controllers
 
 			return respon;
 		}
+
     }
 }

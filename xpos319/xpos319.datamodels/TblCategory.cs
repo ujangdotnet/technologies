@@ -15,6 +15,7 @@ namespace xpos319.datamodels
         [Unicode(false)]
         public string? NameCategory { get; set; }
         [Unicode(false)]
+        [StringLength(100)]
         public string? Description { get; set; }
         public bool? IsDelete { get; set; }
         public int CreateBy { get; set; }
