@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<VariantService>();
 
 //add connection string
 builder.Services.AddDbContext<XPOS_319Context>(option => {
