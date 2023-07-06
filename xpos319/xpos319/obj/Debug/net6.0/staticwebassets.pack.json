@@ -2385,6 +2385,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\04a83f66-951c-4d27-ab74-c4be34383227_triumph-bonneville-t120-2021.jpeg",
+      "PackagePath": "staticwebassets\\images\\04a83f66-951c-4d27-ab74-c4be34383227_triumph-bonneville-t120-2021.jpeg"
+    },
+    {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

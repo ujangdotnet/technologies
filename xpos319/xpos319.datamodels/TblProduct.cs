@@ -6,17 +6,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace xpos319.datamodels
 {
-    [Table("TblCategory")]
-    public partial class TblCategory
+    [Table("TblProduct")]
+    public partial class TblProduct
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(50)]
-        [Unicode(false)]
-        public string? NameCategory { get; set; }
+        public int IdVariant { get; set; }
         [StringLength(100)]
         [Unicode(false)]
-        public string? Description { get; set; }
+        public string NameProduct { get; set; } = null!;
+        [Column(TypeName = "decimal(18, 0)")]
+        public decimal Price { get; set; }
+        public int Stock { get; set; }
+        [Unicode(false)]
+        public string? Image { get; set; }
         public bool? IsDelete { get; set; }
         public int CreateBy { get; set; }
         [Column(TypeName = "datetime")]

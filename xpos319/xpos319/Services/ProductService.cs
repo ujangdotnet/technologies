@@ -4,29 +4,29 @@ using xpos319.viewmodels;
 
 namespace xpos319.Services
 {
-    public class VariantService
+    public class ProductService
     {
         private static readonly HttpClient client = new HttpClient();
         private IConfiguration configuration;
         private string RouteApi = "";
         private VMResponse respon = new VMResponse();
 
-        public VariantService(IConfiguration _configuration)
+        public ProductService(IConfiguration _configuration)
         {
             this.configuration = _configuration;
             this.RouteApi = this.configuration["RouteAPI"];
         }
 
-        public async Task<List<VMTblVariant>> GetAllData()
+        public async Task<List<VMTblProduct>> GetAllData()
         {
-            List<VMTblVariant> data = new List<VMTblVariant>();
-            string apiRespon = await client.GetStringAsync(RouteApi + "apiVariant/GetAllData");
-            data = JsonConvert.DeserializeObject<List<VMTblVariant>>(apiRespon)!;
+            List<VMTblProduct> data = new List<VMTblProduct>();
+            string apiRespon = await client.GetStringAsync(RouteApi + "apiProduct/GetAllData");
+            data = JsonConvert.DeserializeObject<List<VMTblProduct>>(apiRespon)!;
 
             return data;
         }
 
-        public async Task<VMResponse> Create(VMTblVariant data)
+        public async Task<VMResponse> Create(VMTblProduct data)
         {
             //proses convert dari object ke string
             string json = JsonConvert.SerializeObject(data);
@@ -35,7 +35,7 @@ namespace xpos319.Services
             StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
 
             //memanggil API
-            var request = await client.PostAsync(RouteApi + "apiVariant/Save", content);
+            var request = await client.PostAsync(RouteApi + "apiProduct/Save", content);
 
             if (request.IsSuccessStatusCode)
             {
@@ -53,22 +53,12 @@ namespace xpos319.Services
             return respon;
         }
 
-        public async Task<bool> CheckByName(string name, int id, int idCategory)
+        public async Task<bool> CheckByName(string name, int id, int idVariant)
         {
-            string apiRespon = await client.GetStringAsync(RouteApi + $"apiVariant/CheckByName/{name}/{id}/{idCategory}");
+            string apiRespon = await client.GetStringAsync(RouteApi + $"apiProduct/CheckByName/{name}/{id}/{idVariant}");
             bool isExist = JsonConvert.DeserializeObject<bool>(apiRespon);
 
             return isExist;
         }
-
-        public async Task<VMTblVariant> GetDataById(int id)
-        {
-            VMTblVariant data = new VMTblVariant();
-            string apiRespon = await client.GetStringAsync(RouteApi + $"apiVariant/GetDataById/{id}");
-            data = JsonConvert.DeserializeObject<VMTblVariant>(apiRespon);
-
-            return data;
-        }
     }
-
 }

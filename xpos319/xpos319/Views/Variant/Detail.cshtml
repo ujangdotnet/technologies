@@ -3,7 +3,7 @@
 @model VMTblVariant
 @{
     Layout = null;
-    ViewData["Title"] = "Create Variant";
+    ViewData["Title"] = "Detail Variant";
 }
 
 <div class="card">
@@ -16,7 +16,6 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="NameVariant" name="NameVariant">
                     <span id="validate_NameVariant" class="text-danger"></span>
-                     @*<span asp-validation-for = "NameVariant" class="text-danger"></span>*@  
                 </div>
             </div>
             <div class="mb-4 row">
@@ -78,7 +77,7 @@
                     url: "/Variant/CheckByName",
                     type: "get",
                     //method : "get",
-                    data: { name: name, id: id, idCategory : idCategory },
+                    data: { name: name, id: id, idCategory: idCategory },
                     dataType: "json",
                     success: function (respon) {
                         if (respon) {

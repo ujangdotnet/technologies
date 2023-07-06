@@ -33,6 +33,9 @@ namespace Xpos319.api.Controllers
 
                                            IdCategory = v.IdCategory,
                                            NameCategory = c.NameCategory,
+
+                                           IsDelete = v.IsDelete,
+                                           CreateDate = v.CreateDate,
                                        }).ToList();
 
             return data;

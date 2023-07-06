@@ -1,0 +1,230 @@
+﻿@using xpos319.viewmodels;
+
+@model VMTblProduct
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="text-center mt-3">
+            <h5>Form Create Product</h5>
+        </div>
+
+        <form asp-action="Create" method="post" id="form_input" enctype="multipart/form-data">
+            <div class="form-group row mb-4">
+                <label for="NameProduct" class="col-sm-3 col-form-label">Name Product: </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="NameProduct" name="NameProduct">
+                    <span id="validate_NameProduct" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="IdVariant" class="col-sm-3 col-form-label">Name Variant: </label>
+                <div class="col-sm-9">
+                    @Html.DropDownList("IdVariant",
+                    new SelectList(ViewBag.VariantList, "Id", "NameVariant"),
+                    "---Choose Variant---",
+                    new { @class = "form-control"}
+                    )
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="IdCategory" class="col-sm-3 col-form-label">Name Category: </label>
+                <div class="col-sm-9">
+                    @Html.DropDownList("IdCategory",
+                    new SelectList(ViewBag.CategoryList, "Id", "NameCategory"),
+                    "---Choose Category---",
+                    new { @class = "form-control"}
+                    )
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Price" class="col-sm-3 col-form-label">Price: </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="Price" name="Price" value="@Model.Price">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Stock" class="col-sm-3 col-form-label">Stock: </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="Stock" name="Stock" value="@Model.Stock">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="ImageFile" class="col-sm-3 col-form-label">Images: </label>
+                <div class="col-sm-9">
+                    <input type="file" class="form-control" id="ImageFile" name="ImageFile" value="@Model.Image">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <a class="btn btn-outline-secondary" asp-controller="Variant" asp-action="Index">Back To List</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $("#form_input").validate({
+        errorClass: "text-danger",
+        rules: {
+            NameProduct: {
+                required: true,
+                minlength: 5,
+            },
+            Price: {
+                required: true,
+                number: true,
+            },
+            Stock: {
+                required: true,
+                number: true,
+            },
+            IdCategory: "required",
+            IdVariant: "required",
+            ImageFile: {
+                required: true,
+                typeFile: "png|jpg|jpeg",
+                uploadFile: true,
+            },
+        },
+        messages: {
+            NameProduct: {
+                required: "Tolong isi Nama",
+                minlength: "Tolong Lebih Dari 5",
+            },
+            Price: {
+                required: "Tolong isi Price",
+                minlength: "Tolong isi hanya Number",
+            },
+            Stock: {
+                required: "Tolong isi Stock",
+                minlength: "Tolong isi Hanya Number",
+            },
+            IdCategory: "Pliss jangan kosong",
+            IdVariant: "Pliss jangan kosong",
+            ImageFile: {
+                required: "Tolong Masukan Foto",
+                typeFile: "Tolong Upload png|jpg|jpeg",
+                uploadFile: "Tolong Upload File Max Size 1MB",
+            },
+        },
+        submitHandler: function (form) {
+            //console.log('tes')
+            //var dataForm = $(form).serializeArray()
+            //debugger //Buat mendibug
+            var id = 0
+            var name = $("#NameProduct").val()
+            var idVariant = $("#IdVariant").val()
+
+            $.ajax({
+                url: "/Product/CheckByName",
+                type: "get",
+                //method : "get",
+                data: { name: name, id: form.Id, idVariant: idVariant },
+                dataType: "json",
+                success: function (respon) {
+                    if (respon) {
+                        $("#validate_NameProduct").text("Nama Product Sudah Ada")
+
+                        return true;
+
+                    }
+                    else {
+
+                        fungsiSubmit(form)
+                    }
+                }
+
+            })
+        }
+
+    })
+
+    function fungsiSubmit(form) {
+
+        var formData = new FormData();
+
+        var dataForm = $(form).serializeArray();
+
+
+        $.each(dataForm, function (key, input) {
+            formData.append(input.name, input.value)
+        })
+
+        var file = $("#ImageFile").prop("files")
+        if (file.length > 0) {
+            formData.append("ImageFile", file[0])
+        }
+
+        $.ajax({
+
+            url: '/Product/Create',
+            type: "post",
+            data: formData,
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            success: function (respon) {
+                var data = respon.dataRespon
+                if (data.success) {
+                    $("#modal").modal("hide")
+
+                    toastr.success(
+                        data.message,
+                        '',
+                        {
+                            timeOut: 1000,
+                            fadeOut: 1000,
+                            onHidden: function () {
+                                window.location.reload()
+                            }
+                        }
+                    )
+                }
+                else {
+                    toastr.errorClass(data.message)
+                }
+            }
+        })
+    }
+
+    jQuery.validator.addMethod("typeFile", function (value, element, param) {
+        return value.match(new RegExp("." + param + "$"));
+    });
+
+    jQuery.validator.addMethod("uploadFile", function (val, element) {
+
+        var size = element.files[0].size;
+
+        if (size > 1048576)// checks the file more than 1 MB
+        {
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+    $("#IdCategory").change(function () {
+        var IdCategory = $(this).val()
+        $.ajax({
+            url: "/Product/GetDataByIdCategory",
+            data: { id: IdCategory },
+            type: "get",
+            datatype: "json",
+            success: function (respon) {
+                $("#IdVariant").empty()
+                $("#IdVariant").append("<option value=''>----- Pilih Variant -----</option>")
+                $.each(respon, function (index, res) {
+                    $("#IdVariant").append("<option value='" + res.id + "'>" + res.nameVariant + "</option>")
+                })
+            }
+        })
+    })
+
+</script>

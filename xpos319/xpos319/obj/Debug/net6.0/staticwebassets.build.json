@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SdCKZpUdxRExtTxV79+kDYIgkrz35L1OL8TVswFJB/U=",
+  "Hash": "cvsAVmVl2AaiQXJFU+6d0qKDL8dg9mwSYv8pEOFziMI=",
   "Source": "xpos319",
   "BasePath": "_content/xpos319",
   "Mode": "Default",
@@ -10164,6 +10164,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\04a83f66-951c-4d27-ab74-c4be34383227_triumph-bonneville-t120-2021.jpeg",
+      "SourceId": "xpos319",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\",
+      "BasePath": "_content/xpos319",
+      "RelativePath": "images/04a83f66-951c-4d27-ab74-c4be34383227_triumph-bonneville-t120-2021.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\04a83f66-951c-4d27-ab74-c4be34383227_triumph-bonneville-t120-2021.jpeg"
     },
     {
       "Identity": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\js\\site.js",

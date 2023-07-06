@@ -1,10 +1,9 @@
 ﻿@using xpos319.viewmodels;
-@model PagInatedList<VMTblVariant>
+@model PagInatedList<VMTblProduct>
 
 @{
-    ViewData["Title"] = "Variant Page";
+    ViewData["Title"] = "Product Page";
 }
-
 
 <div class="card">
     <div class="card-body">
@@ -40,14 +39,22 @@
         <table class="table table-hover mb-3">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>
                         <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
                             <i class="fas fa-sort"></i>
-                            Name Variant
+                            Name Product
                         </a>
                     </th>
-                    <th>Name Category</th>
-                    <th>Description</th>
+                    <th>Category/ Variant</th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSort">
+                            <i class="fas fa-sort"></i>
+                            Price
+                        </a>
+                    </th>
+                    <th>Stock</th>
+                    <th>Create date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -57,9 +64,12 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.NameVariant</td>
-                            <td>@item.NameCategory</td>
-                            <td>@item.Description</td>
+                            <td><img src="~/images/@item.Image" class="rounded-circle" height="40" width="40"/></td>
+                            <td>@item.NameProduct</td>
+                            <td>@item.NameCategory / @item.NameVariant</td>
+                            <td>@item.Price</td>
+                            <td>@item.Stock</td>
+                            <td>@item.CreateDate</td>
 
                             <td>
                                 <a class="btn btn-warning btn_detail" dataid="@item.Id">Detail</a>
@@ -126,14 +136,7 @@
 <script>
     $("#btn_create").click(function () {
         $("#modal_body").empty()
-        $("#modal_body").load("/Variant/Create")
-        $("#modal").modal("show")
-    })
-
-    $(".btn_detail").click(function () {
-        var id = $(this).attr("dataid")
-        $("#modal_body").empty()
-        $("#modal_body").load("/Variant/Detail?id=" + id)
+        $("#modal_body").load("/Product/Create")
         $("#modal").modal("show")
     })
 
@@ -141,28 +144,28 @@
         var id = $(this).attr("dataid")
 
         $("#modal_body").empty()
-        $("#modal_body").load("/Variant/Edit?id=" + id)
+        $("#modal_body").load("/Product/Edit?id=" + id)
+        $("#modal").modal("show")
+    })
+
+    $(".btn_detail").click(function () {
+        var id = $(this).attr("dataid")
+        $("#modal_body").empty()
+        $("#modal_body").load("/Product/Detail?id=" + id)
         $("#modal").modal("show")
     })
 
 
-
-
-
-
-
     $(".btn_delete").click(function () {
         var id = $(this).attr("dataid")
-        //alert(id)
         $("#modal_body").empty()
-        $("#modal_body").load("/Variant/Delete?id=" + id)
+        $("#modal_body").load("/Product/Delete?id=" + id)
         $("#modal").modal("show")
     })
 
     $("#PageSize").val(@ViewBag.CurrentPageSize)
 
     $("#PageSize").change(function () {
-        // $("form_pageSize").val("@ViewBag.CurrentSort")
         $("#form_pagesize").submit()
     })
 

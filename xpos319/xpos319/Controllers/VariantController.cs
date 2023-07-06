@@ -96,6 +96,13 @@ namespace xpos319.Controllers
             return Json(isExist);
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            VMTblVariant data = await variantService.GetDataById(id);
+
+            return View(data);
+        }
+
         
     }
 }
