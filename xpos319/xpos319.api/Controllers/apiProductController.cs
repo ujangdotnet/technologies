@@ -9,7 +9,7 @@ namespace xpos319.api.Controllers
     [ApiController]
     public class apiProductController : ControllerBase
     {
-        private readonly XPOS_319Context db;
+        private readonly XPOS_319Context db; //deklarasi database yg sudah terhubung
         private VMResponse respon = new VMResponse();
         private int IdUser = 1;
 
@@ -161,10 +161,10 @@ namespace xpos319.api.Controllers
             return respon;
         }
 
-        [HttpPut("Delete/{id}")]
-        public VMResponse Delete(TblProduct data)
+        [HttpDelete("Delete/{id}")]
+        public VMResponse Delete(int id)
         {
-            TblProduct dt = db.TblProducts.Where(a => a.Id == data.Id).FirstOrDefault();
+            TblProduct dt = db.TblProducts.Where(a => a.Id == id).FirstOrDefault();
 
             if (dt != null)
             {

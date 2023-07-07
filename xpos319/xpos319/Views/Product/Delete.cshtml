@@ -1,0 +1,59 @@
+﻿@using xpos319.viewmodels;
+
+@model VMTblProduct
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Delete Product";
+}
+
+<div>
+    <h3>Apa anda yakin mau delete @Model.NameProduct ?</h3>
+</div>
+<div class="modal-footer">
+    <form asp-action="SureDelete" method="post" id="form_delete">
+        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+        <button type="submit" class="btn btn-secondary">Delete</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+
+<script>
+    $("#form_delete").validate({
+        submitHandler: function (form) {
+            var id = $("#Id").val()
+
+            $.ajax({
+
+                url: '/Product/SureDelete',
+                type: "post",
+                data: { id: id },
+                dataType: "json",
+                success: function (respon) {
+                    var data = respon.dataResponse
+
+                    if (data.success) {
+                        $("#modal").modal("hide")
+
+                        toastr.success(
+                            data.message,
+                            '',
+                            {
+                                timeOut: 1000,
+                                fadeOut: 1000,
+                                onHidden: function () {
+                                    window.location.reload()
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        toastr.errorClass(data.message)
+                    }
+                }
+            })
+        }
+
+    })
+</script>
+

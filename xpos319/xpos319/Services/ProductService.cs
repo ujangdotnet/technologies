@@ -60,5 +60,63 @@ namespace xpos319.Services
 
             return isExist;
         }
+
+        public async Task<VMTblProduct> GetDataById(int id)
+        {
+            VMTblProduct data = new VMTblProduct();
+            string apiRespon = await client.GetStringAsync(RouteApi + $"apiProduct/GetDataById/{id}");
+            data = JsonConvert.DeserializeObject<VMTblProduct>(apiRespon);
+
+            return data;
+        }
+
+        public async Task<VMResponse> Edit(VMTblProduct data)
+        {
+            //proses convert dari object ke string
+            string json = JsonConvert.SerializeObject(data);
+
+            //proses mengubah string menjadi json 
+            StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+
+            //memanggil API
+            var request = await client.PutAsync(RouteApi + "apiProduct/Edit", content);
+
+            if (request.IsSuccessStatusCode)
+            {
+                //membaca respon dari API
+                var apiRespon = await request.Content.ReadAsStringAsync();
+
+                respon = JsonConvert.DeserializeObject<VMResponse>(apiRespon)!;
+            }
+            else
+            {
+                respon.Success = false;
+                respon.Message = $"{request.StatusCode} : {request.ReasonPhrase}";
+            }
+
+            return respon;
+        }
+
+        public async Task<VMResponse> Delete(int id)
+        {
+
+            //memanggil API
+            var request = await client.DeleteAsync(RouteApi + $"apiProduct/Delete/{id}");
+
+            if (request.IsSuccessStatusCode)
+            {
+                //membaca respon dari API
+                var apiRespon = await request.Content.ReadAsStringAsync();
+
+                respon = JsonConvert.DeserializeObject<VMResponse>(apiRespon)!;
+            }
+            else
+            {
+                respon.Success = false;
+                respon.Message = $"{request.StatusCode} : {request.ReasonPhrase}";
+            }
+
+            return respon;
+        }
     }
 }

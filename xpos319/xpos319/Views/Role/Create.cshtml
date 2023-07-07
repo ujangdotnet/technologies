@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Create Role Page";
+}
+
+<div class="h4 mb-4">
+    <h3><strong>Create Category</strong></h3>
+</div>
+<div>
+    <form asp-action="Create" method="post" id="form_input">
+
+        <div class="form-group row mb-4">
+            <label for="RoleName" class="col-sm-4 col-form-label">Name Role</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="RoleName" name="RoleName">
+                <span id="validate_RoleName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row mt-xl-5">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-light" asp-controller="Role" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#form_input").validate({
+        submitHandler: function (form) {
+            var dataForm = $(form).serialize()
+
+            var roleName = $("#RoleName").val()
+
+            $.ajax({
+                url: "Role/CheckNameIsExist",
+                type: "get",
+                //method:"get"
+                data: { RoleName: roleName },
+                dataType: "json",
+                success: function (response) {
+                    if (response) {
+                        $("#validate_RoleName").text("Name Role is already exists")
+                        return true
+                    } else {
+                        functionSubmit(dataForm);
+                    }
+                }
+            })
+        },
+        errorClass: "text-danger",
+        rules: {
+            RoleName: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            RoleName: {
+                required: "Please fill Name Role",
+                minlength: "The Name must than 5 characters"
+            }
+        }
+    })
+
+    function functionSubmit(dataParam) {
+        $.ajax({
+            url: "Role/Creates",
+            type: "post",
+            data: dataParam,
+            dataType: "json",
+            success: function (response) {
+                var data = response.dataResponse
+                if (data.success) {
+                    $("#modal").modal("hide")
+
+                    toastr.success(
+                        data.message,
+                        '', {
+                        timeOut: 3000,
+                        fadeOut: 3000,
+                        onHidden: function () {
+                            window.location.reload()
+                        }
+                    }
+                    )
+                } else {
+                    toastr.errorClass(data.message)
+                }
+            }
+        })
+    }
+</script>

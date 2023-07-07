@@ -128,5 +128,62 @@ namespace xpos319.Controllers
 
             return uniqueFileName;
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            VMTblProduct data = await productService.GetDataById(id);
+
+            List<VMTblVariant> variantList = await variantService.GetAllData();
+            List<TblCategory> categoryList = await categoryService.GetAllData();
+            ViewBag.VariantList = variantList;
+            ViewBag.CategoryList = categoryList;
+
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(VMTblProduct dataParam)
+        {
+            if (dataParam.ImageFile != null)
+            {
+                dataParam.Image = Upload(dataParam);
+            }
+
+            VMResponse respon = await productService.Edit(dataParam);
+
+            if (respon.Success)
+            {
+                return Json(new { dataRespon = respon });
+            }
+
+            return View(dataParam);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            VMTblProduct data = await productService.GetDataById(id);
+
+            return View(data);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            VMTblProduct data = await productService.GetDataById(id);
+
+            return View(data);
+        }
+
+        public async Task<IActionResult> SureDelete(int id)
+        {
+
+            VMResponse respon = await productService.Delete(id);
+
+            if (respon.Success)
+            {
+                //return RedirectToAction("Index");
+                return Json(new { dataResponse = respon });
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

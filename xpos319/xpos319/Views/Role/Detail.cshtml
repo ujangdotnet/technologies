@@ -1,0 +1,20 @@
+﻿@using xpos319.datamodels;
+@model TblRole
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Detail Role Page";
+}
+
+<div class="h4 mb-4">
+    <h3><strong>Detail Role</strong></h3>
+</div>
+<div>
+        <div>
+            <p>id: @Model.Id</p>
+        </div>
+        
+        <div>
+        <h3>Role Name: <strong>@Model.RoleName</strong></h3>
+        </div>
+</div>

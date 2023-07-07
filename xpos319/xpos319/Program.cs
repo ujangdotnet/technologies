@@ -10,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<VariantService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<RoleService>();
+builder.Services.AddScoped<CustomerService>();
 
 //add connection string
 builder.Services.AddDbContext<XPOS_319Context>(option => {

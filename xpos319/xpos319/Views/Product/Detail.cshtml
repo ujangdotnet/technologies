@@ -1,0 +1,62 @@
+﻿@using xpos319.viewmodels;
+
+@model VMTblProduct
+@{
+    Layout = null;
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="text-center mt-3">
+            <h5>Details Product</h5>
+        </div>
+
+        <form asp-action="Create" method="post" id="form_input" enctype="multipart/form-data">
+            <div class="form-group row mb-4">
+                <label for="NameProduct" class="col-sm-3 col-form-label">Name Product: </label>
+                <div class="col-sm-9">
+                    <input readonly type="text" class="form-control" id="NameProduct" name="NameProduct" value="@Model.NameProduct">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="NameCategory" class="col-sm-3 col-form-label">Name Category: </label>
+                <div class="col-sm-9">
+                    <input readonly type="text" class="form-control" id="NameCategory" name="NameCategory" value="@Model.NameCategory">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="NameVariant" class="col-sm-3 col-form-label">Name Variant: </label>
+                <div class="col-sm-9">
+                    <input readonly type="text" class="form-control" id="NameVariant" name="NameVariant" value="@Model.NameVariant">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Price" class="col-sm-3 col-form-label">Price: </label>
+                <div class="col-sm-9">
+                    <input readonly type="text" class="form-control" id="Price" name="Price" value="@Model.Price">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Stock" class="col-sm-3 col-form-label">Stock: </label>
+                <div class="col-sm-9">
+                    <input readonly type="text" class="form-control" id="Stock" name="Stock" value="@Model.Stock">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="ImageFile" class="col-sm-3 col-form-label">Images: </label>
+                <div class="col-sm-9">
+                    @{
+                        string image = (@Model.Image!.Replace(@Model.Image!.Split('_')[0], "")).Substring(1);
+                        if (@Model.Image != null)
+                        {
+                            <input type="text" class="form-control" name="Image" value="@image" readonly />
+                            <img src="~/images/@Model.Image" height="auto" width="150" />
+                        }
+                    }
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
