@@ -11,43 +11,43 @@
     <h3>Apa anda yakin mau delete @Model.RoleName ?</h3>
 </div>
 <div class="modal-footer">
-    <form asp-action="SureDelete" method="post">
+    <form asp-action="SureDelete" method="post" id="form_delete">
         <input type="hidden" id="Id" name="Id" value="@Model.Id" />
         <button type="submit" class="btn btn-secondary">Delete</button>
-        <a asp-controller="Category" asp-action="Index" class="btn btn-primary">Cancel</a>
+        <a asp-controller="Role" asp-action="Index" class="btn btn-primary">Cancel</a>
     </form>
 </div>
 
 <script>
-    function functionSubmit(dataParam) {
-        $.ajax({
-            url: "Role/SureDelete",
-            type: "post",
-            data: dataParam,
-            dataType: "json",
-            success: function (respon) {
-                var data = respon.dataResponse;
+    $("#form_delete").validate({
+        submitHandler: function (form) {
+            var id = $("#Id").val()
 
-                if (data.success) {
-                    $("#modal").modal("hide")
+            $.ajax({
+                url: "Role/SureDelete",
+                type: "post",
+                data: { id: id },
+                dataType: "json",
+                success: function (response) {
+                    var data = response.dataResponse
+                    if (data.success) {
+                        $("#modal").modal("hide")
 
-                    toastr.success(
-                        data.message,
-                        '',
-                        {
-                            timeOut: 3000,
-                            fadeOut: 3000,
+                        toastr.success(
+                            data.message,
+                            '', {
+                            timeOut: 1500,
+                            fadeOut: 1500,
                             onHidden: function () {
-                                window.location.reload()
+                                window.location.reload();
                             }
-                        }
-                    )
-
-                } else {
-                    toastr.errorClass(data.message)
+                        })
+                    } else {
+                        toastr.errorClass(data.message)
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
+    })
 </script>
 

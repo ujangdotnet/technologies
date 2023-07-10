@@ -11,6 +11,7 @@ namespace xpos319.api.Controllers
     {
         private readonly XPOS_319Context db;
         private VMResponse respon = new VMResponse();
+        private int IdUser = 1;
 
         public ApiCustomerController(XPOS_319Context _db)
         {
@@ -33,7 +34,10 @@ namespace xpos319.api.Controllers
                                            Phone = c.Phone,
 
                                            IdRole = c.IdRole,
-                                           NameRole = r.RoleName,
+                                           RoleName = r.RoleName,
+
+                                           IsDelete = c.IsDelete,
+                                           CreateDate = c.CreateDate,
 
                                        }).ToList();
             return data;
@@ -56,10 +60,129 @@ namespace xpos319.api.Controllers
                                       Phone = c.Phone,
 
                                       IdRole = c.IdRole,
-                                      NameRole = r.RoleName,
+                                      RoleName = r.RoleName,
+
+                                      IsDelete = c.IsDelete,
+                                      CreateDate = c.CreateDate,
 
                                   }).FirstOrDefault()!;
             return data;
+        }
+
+        [HttpGet("CheckByEmail/{email}/{id}")]
+        public bool CheckIsExist(string email, int id)
+        {
+            TblCustomer data = new TblCustomer();
+
+            if (id == 0)
+            {
+                data = db.TblCustomers.Where(a => a.Email == email && a.IsDelete == false).FirstOrDefault()!;
+            }
+            else
+            {
+                data = db.TblCustomers.Where(a => a.Email == email && a.IsDelete == false && a.Id != id).FirstOrDefault()!;
+            }
+
+            if (data != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        [HttpPost("Save")]
+        public VMResponse Save(TblCustomer data)
+        {
+            data.CreateBy = IdUser;
+            data.CreateDate = DateTime.Now;
+            data.IsDelete = false;
+
+            try
+            {
+                db.Add(data);
+                db.SaveChanges();
+
+                respon.Message = "Data success saved";
+            }
+            catch (Exception e)
+            {
+                respon.Success = false;
+                respon.Message = e.Message;
+            }
+
+            return respon;
+        }
+
+        [HttpPut("Edit")]
+        public VMResponse Edit(TblCustomer data)
+        {
+            TblCustomer dt = db.TblCustomers.Where(a => a.Id == data.Id).FirstOrDefault();
+
+            if (dt != null)
+            {
+                dt.NameCustomer = data.NameCustomer;
+                dt.Email = data.Email;
+                dt.Password = data.Password;
+                dt.Address = data.Address;
+                dt.Phone = data.Phone;
+                dt.IdRole = data.IdRole;
+                dt.UpdateBy = IdUser;
+                dt.UpdateDate = DateTime.Now;
+
+                try
+                {
+                    db.Update(dt);
+                    db.SaveChanges();
+
+                    respon.Message = "Data success edited";
+                }
+                catch (Exception e)
+                {
+                    respon.Success = false;
+                    respon.Message = e.Message;
+                }
+            }
+            else
+            {
+                respon.Success = false;
+                respon.Message = "data not found";
+            }
+
+            return respon;
+        }
+
+        [HttpDelete("Delete/{id}")]
+        public VMResponse Delete(int id)
+        {
+            TblCustomer dt = db.TblCustomers.Where(a => a.Id == id).FirstOrDefault();
+
+            if (dt != null)
+            {
+                dt.IsDelete = true;
+                dt.UpdateBy = IdUser;
+                dt.UpdateDate = DateTime.Now;
+
+                try
+                {
+                    db.Update(dt);
+                    db.SaveChanges();
+
+                    respon.Message = "Data success deleted";
+                }
+                catch (Exception e)
+                {
+                    respon.Success = false;
+                    respon.Message = e.Message;
+                }
+            }
+            else
+            {
+                respon.Success = false;
+                respon.Message = "data not found";
+            }
+
+            return respon;
         }
     }
 }

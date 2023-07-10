@@ -2269,6 +2269,30 @@
       "PackagePath": "staticwebassets\\adminmart\\dist\\css\\style.min.css"
     },
     {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\american-express.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\american-express.png"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\cirrus.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\cirrus.png"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\mastercard.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\mastercard.png"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\paypal.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\paypal.png"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\paypal2.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\paypal2.png"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\img\\credit\\visa.png",
+      "PackagePath": "staticwebassets\\adminmart\\dist\\img\\credit\\visa.png"
+    },
+    {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\adminmart\\dist\\js\\app-style-switcher.js",
       "PackagePath": "staticwebassets\\adminmart\\dist\\js\\app-style-switcher.js"
     },
@@ -2401,8 +2425,16 @@
       "PackagePath": "staticwebassets\\images\\0ba49663-1333-415f-8d4c-0eca1135fda5_triumph-chrome-edition.jpeg"
     },
     {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\24082889-303b-4b4b-a598-10400e03cff6_1046172_720.jpg",
+      "PackagePath": "staticwebassets\\images\\24082889-303b-4b4b-a598-10400e03cff6_1046172_720.jpg"
+    },
+    {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\2a25a27c-6f12-4330-bb14-68cbb63e8f70_triumph-chrome-edition.jpeg",
       "PackagePath": "staticwebassets\\images\\2a25a27c-6f12-4330-bb14-68cbb63e8f70_triumph-chrome-edition.jpeg"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\4cb3da89-e7b4-4898-ad7e-a25199d2e3c0_triumph-chrome-edition.jpeg",
+      "PackagePath": "staticwebassets\\images\\4cb3da89-e7b4-4898-ad7e-a25199d2e3c0_triumph-chrome-edition.jpeg"
     },
     {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\5b60ead8-21e3-40a3-ab03-699a87630409_triumph-chrome-edition.jpeg",
@@ -2491,6 +2523,10 @@
     {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\e52dc436-db40-4e22-b23e-3a2fb701f7da_triumph-chrome-edition.jpeg",
       "PackagePath": "staticwebassets\\images\\e52dc436-db40-4e22-b23e-3a2fb701f7da_triumph-chrome-edition.jpeg"
+    },
+    {
+      "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\images\\ebc20d85-3a8c-4167-9680-c8fddfbd23a0_triumph-bonneville-t120-2021.jpeg",
+      "PackagePath": "staticwebassets\\images\\ebc20d85-3a8c-4167-9680-c8fddfbd23a0_triumph-bonneville-t120-2021.jpeg"
     },
     {
       "Id": "C:\\BATCH_319\\technology\\xpos319\\xpos319\\wwwroot\\js\\site.js",

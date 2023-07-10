@@ -18,6 +18,8 @@ namespace xpos319.datamodels
 
         public virtual DbSet<TblCategory> TblCategories { get; set; } = null!;
         public virtual DbSet<TblCustomer> TblCustomers { get; set; } = null!;
+        public virtual DbSet<TblOrderDetail> TblOrderDetails { get; set; } = null!;
+        public virtual DbSet<TblOrderHeader> TblOrderHeaders { get; set; } = null!;
         public virtual DbSet<TblProduct> TblProducts { get; set; } = null!;
         public virtual DbSet<TblRole> TblRoles { get; set; } = null!;
         public virtual DbSet<TblVariant> TblVariants { get; set; } = null!;

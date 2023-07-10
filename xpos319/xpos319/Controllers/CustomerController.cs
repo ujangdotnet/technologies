@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using xpos319.datamodels;
 using xpos319.Services;
 using xpos319.viewmodels;
 
@@ -8,13 +9,11 @@ namespace xpos319.Controllers
     {
         private readonly RoleService roleService;
         private readonly CustomerService customerService;
-        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public CustomerController(RoleService _roleService, CustomerService _customerService, IWebHostEnvironment _webHostEnvironment)
+        public CustomerController(RoleService _roleService, CustomerService _customerService)
         {
             this.roleService = _roleService;
             this.customerService = _customerService;
-            this.webHostEnvironment = _webHostEnvironment;
         }
 
         public async Task<IActionResult> Index(
@@ -44,7 +43,7 @@ namespace xpos319.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 data = data.Where(a => a.NameCustomer.ToLower().Contains(searchString.ToLower())
-                || a.NameRole.ToLower().Contains(searchString.ToLower())).ToList();
+                || a.RoleName.ToLower().Contains(searchString.ToLower())).ToList();
 
             }
 
@@ -59,6 +58,15 @@ namespace xpos319.Controllers
             }
 
             return View(PagInatedList<VMTblCustomer>.CreateAsync(data, pageNumber ?? 1, pageSize ?? 3));
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            VMTblCustomer data = new VMTblCustomer();
+            List<TblRole> roleList = await roleService.GetAllData();
+            ViewBag.RoleList = roleList;
+
+            return View(data);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace xpos319.viewmodels
         public string Address { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public int? IdRole { get; set; }
-        public string NameRole { get; set; } = null!;
+        public string? RoleName { get; set; }  
         public bool IsDelete { get; set; }
         public int CreateBy { get; set; }
         public DateTime CreateDate { get; set; }

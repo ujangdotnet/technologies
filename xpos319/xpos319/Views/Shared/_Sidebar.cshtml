@@ -66,6 +66,21 @@
                         <i data-feather="server" class="feather-icon"></i><span class="hide-menu">Customer</span>
                     </a>
                 </li>
+
+                <li class="list-divider"></li>
+                <li class="nav-small-cap"><span class="hide-menu">Transaction</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" asp-controller="Order" asp-action="Catalog"
+                       aria-expanded="false">
+                        <i data-feather="server" class="feather-icon"></i><span class="hide-menu">Order</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" asp-controller="Order" asp-action="HistoryOrder"
+                       aria-expanded="false">
+                        <i data-feather="server" class="feather-icon"></i><span class="hide-menu">History Order</span>
+                    </a>
+                </li>
                 
             </ul>
         </nav>

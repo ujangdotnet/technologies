@@ -1,0 +1,51 @@
+﻿<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Search Transaction</h3>
+    </div>
+
+
+    <form asp-action="Catalog">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Name Product</label>
+                <input type="text" class="form-control" name="NameProduct" id="NameProduct" placeholder="Name Product">
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Min Amount</label>
+                        <input type="number" class="form-control" name="MinAmount" id="MinAmount" placeholder="0">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Max Amount</label>
+                        <input type="number" class="form-control" name="MaxAmount" id="MinAmount" placeholder="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary float-right">Search</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    $("#MinDate").change(function () {
+        var min = $(this).val();
+        $("#MaxDate").attr({ "min": min })
+
+    })
+
+    $("#MaxDate").change(function () {
+        var max = $(this).val();
+        $("#MinDate").attr({ "max": max })
+
+    })
+</script>

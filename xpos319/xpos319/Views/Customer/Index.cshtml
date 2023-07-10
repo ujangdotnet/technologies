@@ -59,7 +59,7 @@
                     {
                         <tr>
                             <td>@item.NameCustomer</td>
-                            <td>@item.NameRole</td>
+                            <td>@item.RoleName</td>
                             <td>@item.Email</td>
                             <td>@item.Address</td>
                             <td>@item.Phone</td>
@@ -129,7 +129,7 @@
 <script>
     $("#btn_create").click(function () {
         $("#modal_body").empty()
-        $("#modal_body").load("/Customer/Create")
+        $("#modal_body").load("Customer/Create")
         $("#modal").modal("show")
     })
 
