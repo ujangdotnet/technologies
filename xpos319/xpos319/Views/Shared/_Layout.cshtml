@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    int IdCustomer = @Context.Session.GetInt32("IdCustomer") ?? 0;
+    string NameCustomer = @Context.Session.GetString("NameCustomer") ?? "";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,11 +37,13 @@
 
          <partial name="_Header" />
          <partial name="_Sidebar" />
-   
-    <div class="page-wrapper">
+       
+        <div class="page-wrapper">
         <div class="container-fluid">
             <main role="main" class="pb-3">
-                @RenderBody()
+                  
+                  @RenderBody()
+                      
             </main>
         </div>
 
@@ -52,7 +59,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    @*<h5 class="modal-title">Modal title</h5>*@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

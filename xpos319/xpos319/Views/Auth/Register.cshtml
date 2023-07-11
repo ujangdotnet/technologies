@@ -1,0 +1,144 @@
+﻿@using xpos319.viewmodels;
+
+@model VMTblCustomer
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Customer";
+}
+
+<div class="card">
+    <div class="card-body">
+    <h2 class="text-center">Register</h2>
+    <p class="text-center">Enter your data to access our feature.</p>
+        <form asp-action="Create" method="post" id="form_input">
+
+            <div class="form-group row mb-4">
+                <label for="NameCustomer" class="col-sm-3 col-form-label">Name Customer: </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="NameCustomer" name="NameCustomer" value="@Model.NameCustomer">
+                    @*<span id="validate_NameProduct" class="text-danger"></span>*@
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Email" class="col-sm-3 col-form-label">Email: </label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+                    <span id="validate_Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Password" class="col-sm-3 col-form-label">Password: </label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="Password" name="Password" value="@Model.Password">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Password" class="col-sm-3 col-form-label">Re-type Password: </label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="Password" name="Password" value="@Model.Password">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Phone" class="col-sm-3 col-form-label">Phone: </label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" id="Phone" name="Phone" value="@Model.Phone">
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="IdRole" class="col-sm-3 col-form-label">Role Name: </label>
+                <div class="col-sm-9">
+                    @Html.DropDownList("IdRole",//this is name dropdown idrole
+                    new SelectList(ViewBag.RoleList, "Id", "RoleName"),
+                    "---Choose Role---",
+                    new {@class = "form-control"}
+                    )
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="Address" class="col-sm-3 col-form-label">Address: </label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" id="Address" name="Address"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-lg-12 text-center">
+                    <button type="submit" class="btn btn-block btn-dark">Register</button>
+                </div>
+                <div class="col-lg-12 text-center mt-5">
+                    Don't have an account? <button class="btn btn-link text-danger" id="btn_login">Sign In</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $("#btn_login").click(function () {
+        $("#modal_body").empty()
+        $("#modal_body").load("Auth/Login")
+        $("#modal").modal("show")
+    })
+
+    $("#form_signup").validate({
+
+        errorClass: "is-invalid text-danger",
+        rules: {
+            NameCustomer:{
+                required: true,
+            },
+            Email: {
+                required: true,
+                email: true,
+            },
+            Password: "required",
+        },
+        messages: {
+            NameCustomer: {
+                required: "please fill name",
+            },
+            Email: {
+                required: "please fill email",
+                email: "please fill a valid email",
+            },
+            Password: "please fill password",
+        },
+        submitHandler: function (form) {
+            var email = $("#Email").val()
+            var password = $("#Password").val()
+            var name = $("#NameCustomer").val()
+
+            $.ajax({
+                url: "/Auth/LoginSubmit",
+                data: { email: email, password: password },
+                type: "post",
+                dataType: "json",
+                success: function (respon) {
+                    var data = respon.dataRespon
+
+                    if (data.success) {
+                        $("#modal").modal("hide")
+                        toastr.success(
+                            data.message,
+                            '',
+                            {
+                                timeOut: 2000,
+                                fadeOut: 2000,
+                                onHidden: function () {
+                                    window.location.reload()
+                                }
+                            }
+                        )
+
+                    }
+                    else {
+                        toastr.errorClass(data.message)
+                    }
+                }
+            })
+        }
+    })
+</script>

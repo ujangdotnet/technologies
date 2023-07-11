@@ -13,6 +13,7 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<AuthService>();
 
 //add session
 builder.Services.AddDistributedMemoryCache();

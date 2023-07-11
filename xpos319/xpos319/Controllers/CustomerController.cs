@@ -9,6 +9,7 @@ namespace xpos319.Controllers
     {
         private readonly RoleService roleService;
         private readonly CustomerService customerService;
+        private int IdUser = 1;
 
         public CustomerController(RoleService _roleService, CustomerService _customerService)
         {
@@ -67,6 +68,26 @@ namespace xpos319.Controllers
             ViewBag.RoleList = roleList;
 
             return View(data);
+        }
+
+        public async Task<JsonResult> CheckEmailIsExist(string email, int id)
+        {
+            bool isExist = await customerService.CheckByEmail(email, id);
+            return Json(isExist);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(VMTblCustomer dataParam)
+        {
+
+            VMResponse respon = await customerService.Create(dataParam);
+
+            if (respon.Success)
+            {
+                return Json(new { dataRespon = respon });
+            }
+
+            return View(dataParam);
         }
     }
 }

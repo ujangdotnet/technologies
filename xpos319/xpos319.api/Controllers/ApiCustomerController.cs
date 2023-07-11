@@ -70,7 +70,7 @@ namespace xpos319.api.Controllers
         }
 
         [HttpGet("CheckByEmail/{email}/{id}")]
-        public bool CheckIsExist(string email, int id)
+        public bool CheckByEmail(string email, int id)
         {
             TblCustomer data = new TblCustomer();
 
