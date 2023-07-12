@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using xpos319.api.Service;
 using xpos319.datamodels;
 using xpos319.viewmodels;
 
@@ -9,14 +10,19 @@ namespace xpos319.api.Controllers
     [ApiController]
     public class apiRoleController : ControllerBase
     {
+        //this start
         private readonly XPOS_319Context db;
         VMResponse respon = new VMResponse();
+        private RolesServices rolesService;
         private int IdUser = 1;
 
         public apiRoleController(XPOS_319Context _db)
         {
             this.db = _db;
+            this.rolesService = new RolesServices(db);
         }
+        //this.end
+
 
         [HttpGet("GetAllData")]
         public List<TblRole> GetAllData()
@@ -72,10 +78,16 @@ namespace xpos319.api.Controllers
         }
 
         [HttpGet("GetDataById/{id}")]
-        public TblRole DataById(int id)
+        public async VMTblRole DataById(int id)
         {
-            TblRole result = db.TblRoles.Where(a => a.Id == id).FirstOrDefault();
+            //TblRole result = db.TblRoles.Where(a => a.Id == id).FirstOrDefault();
+            VMTblRole result = db.TblRoles.Where(a => a.Id == id).Select(a => new VMTblRole()
+                                                                        {
+                                                                          Id = a.Id,
+                                                                          RoleName = a.RoleName,
+                                                                        }).FirstOrDefault()!;
 
+            result.role_menu = await rolesService.GetMenuAccessParentChildByRoleID(result.Id, );
             return result;
         }
 

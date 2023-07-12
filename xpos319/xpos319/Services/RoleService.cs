@@ -61,11 +61,11 @@ namespace xpos319.Services
             return isExist;
         }
 
-        public async Task<TblRole> GetDataById(int id)
+        public async Task<VMTblRole> GetDataById(int id)
         {
-            TblRole data = new TblRole();
+            VMTblRole data = new VMTblRole();
             string apiRespon = await client.GetStringAsync(RouteApi + $"apiRole/GetDataById/{id}");
-            data = JsonConvert.DeserializeObject<TblRole>(apiRespon);
+            data = JsonConvert.DeserializeObject<VMTblRole>(apiRespon);
 
             return data;
         }

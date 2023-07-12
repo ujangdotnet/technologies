@@ -61,6 +61,50 @@ namespace xpos319.Controllers
             return View(PagInatedList<TblRole>.CreateAsync(data, pageNumber ?? 1, pageSize ?? 3));
         }
 
+        public async Task<IActionResult> Index_MenuAccess(
+                                           string sortOrder,
+                                           string searchString,
+                                           string currentFilter,
+                                           int? pageNumber,
+                                           int? pageSize)
+        {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CurrentPageSize = pageSize;
+            ViewBag.NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            List<TblRole> data = await roleService.GetAllData();
+
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                data = data.Where(a => a.RoleName.ToLower().Contains(searchString.ToLower())).ToList();
+
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    data = data.OrderByDescending(a => a.RoleName).ToList();
+                    break;
+
+                default:
+                    data = data.OrderBy(a => a.RoleName).ToList();
+                    break;
+            }
+
+            return View(PagInatedList<TblRole>.CreateAsync(data, pageNumber ?? 1, pageSize ?? 3));
+        }
         public IActionResult Create()
         {
             TblRole data = new TblRole();
@@ -88,13 +132,20 @@ namespace xpos319.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            TblRole data = await roleService.GetDataById(id);
+            VMTblRole data = await roleService.GetDataById(id);
             return View(data);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            TblRole data = await roleService.GetDataById(id);
+            VMTblRole data = await roleService.GetDataById(id);
+            return View(data);
+        }
+
+        public async Task<IActionResult> Edit_MenuAccess(int id)
+        {
+            VMTblRole data = await roleService.GetDataById(id);
+            ViewBag.RoleMenu = data.RoleName;
             return View(data);
         }
 
@@ -131,6 +182,8 @@ namespace xpos319.Controllers
             return RedirectToAction("Index");
 
         }
+
+
     }
 }
 

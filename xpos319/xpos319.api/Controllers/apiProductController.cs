@@ -9,6 +9,7 @@ namespace xpos319.api.Controllers
     [ApiController]
     public class apiProductController : ControllerBase
     {
+        //this.start
         private readonly XPOS_319Context db; //deklarasi database yg sudah terhubung
         private VMResponse respon = new VMResponse();
         private int IdUser = 1;
@@ -17,6 +18,7 @@ namespace xpos319.api.Controllers
         {
             this.db = _db;
         }
+        //this.end
 
         [HttpGet("GetAllData")]
         public List<VMTblProduct> GetAllData()

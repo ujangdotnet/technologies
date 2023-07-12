@@ -9,6 +9,7 @@ namespace Xpos319.api.Controllers
     [ApiController]
     public class apiVariantController : ControllerBase
     {
+        //this.start
         private readonly XPOS_319Context db;
         private int idUser = 1;
         private VMResponse response = new VMResponse();
@@ -17,6 +18,7 @@ namespace Xpos319.api.Controllers
         {
             this.db = _db;
         }
+        //this.end
 
         [HttpGet("GetAllData")]
         public List<VMTblVariant> GetAllData()

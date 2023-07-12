@@ -10,6 +10,7 @@ namespace xpos319.api.Controllers
 	[ApiController]
 	public class apiCategoryController : ControllerBase
 	{
+		//this.start
 		private readonly XPOS_319Context db;
 		VMResponse respon = new VMResponse();
 		private int IdUser = 1;
@@ -17,6 +18,7 @@ namespace xpos319.api.Controllers
         {
             this.db = _db;
         }
+		//this.end
 
 		[HttpGet("GetAllData")]
 		public List<TblCategory> GetAllData(){
