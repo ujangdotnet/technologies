@@ -17,7 +17,7 @@ namespace xpos319.api.Controllers
         public apiCategoryController(XPOS_319Context _db) //ini adalah sebuah constructor
         {
             this.db = _db;
-        }
+        } 
 		//this.end
 
 		[HttpGet("GetAllData")]

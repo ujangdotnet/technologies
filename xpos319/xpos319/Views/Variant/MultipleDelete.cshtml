@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Multiple Delete Variant";
+}
+
+
+<div>
+<div>
+    <h3>Apa anda yakin mau delete variant?</h3>
+</div>
+    <form asp-action="SureMultipleDelete" method="post" id="form_delete">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name Variant</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.ListName)
+            {
+            <tr>
+                <td>@item</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+        
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary">Delete</button>
+        <a asp-controller="Variant" asp-action="Index" class="btn btn-primary">Cancel</a>
+    </div>
+    </form>
+</div>
+
+<script>
+    $("#form_delete").validate({
+        submitHandler: function (form) {
+
+            $.ajax({
+
+                url: '/Variant/SureMultipleDelete',
+                type: "post",
+                data: { listId: listId },
+                dataType: "json",
+                success: function (respon) {
+                    var data = respon.dataRespon
+
+                    if (data.success) {
+                        $("#modal").modal("hide")
+
+                        toastr.success(
+                            data.message,
+                            '',
+                            {
+                                timeOut: 2000,
+                                fadeOut: 2000,
+                                onHidden: function () {
+                                    window.location.reload()
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        toastr.errorClass(data.message)
+                    }
+                }
+            })
+        }
+
+    })
+</script>
+

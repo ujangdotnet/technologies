@@ -16,6 +16,7 @@
                 <div class="d-flex justify-content-between">
 
                     <button type="submit" id="btn_create" class="btn btn-primary">Create</button>
+                    <button type="submit" id="btn_multiple_delete" class="btn btn-primary" disabled>Delete Multiple</button>
 
                     <form asp-action="Index" asp-route-pageSize="@ViewBag.CurrentPageSize">
                         <div class="input-group w-100">
@@ -40,6 +41,7 @@
         <table class="table table-hover mb-3">
             <thead>
                 <tr>
+                    <th></th>
                     <th>
                         <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
                             <i class="fas fa-sort"></i>
@@ -57,6 +59,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td><input type="checkbox" onchange="selectedItem()" class="mychecked" value="@item.Id"/></td>
                             <td>@item.NameVariant</td>
                             <td>@item.NameCategory</td>
                             <td>@item.Description</td>
@@ -124,6 +127,39 @@
 </div>
 
 <script>
+
+    //multiple checked - start
+    var listId = [];
+
+    function selectedItem(){
+        var mychecked = $(".mychecked")
+        listId = []
+
+        for(var i=0; i < mychecked.length; i++){
+            if(mychecked[i].checked){
+                listId.push(mychecked[i].value)
+            }
+        }
+
+        console.log(listId)
+
+
+        if(listId.length > 0){
+            $("#btn_multiple_delete").attr("disabled", false)
+        }else{
+            $("#btn_multiple_delete").attr("disabled", true)
+        }
+    }
+
+    $("#btn_multiple_delete").click(function () {
+        $("#modal_body").empty()
+        $("#modal_body").load("/Variant/MultipleDelete", {listId : listId})
+        $("#modal").modal("show")
+    })
+
+    //multiple checked - end
+
+
     $("#btn_create").click(function () {
         $("#modal_body").empty()
         $("#modal_body").load("/Variant/Create")
@@ -144,12 +180,6 @@
         $("#modal_body").load("/Variant/Edit?id=" + id)
         $("#modal").modal("show")
     })
-
-
-
-
-
-
 
     $(".btn_delete").click(function () {
         var id = $(this).attr("dataid")

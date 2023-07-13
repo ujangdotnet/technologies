@@ -49,7 +49,7 @@ namespace Xpos319.api.Controllers
             VMTblVariant res = (from v in db.TblVariants
                                 join c in db.TblCategories
                                 on v.IdCategory equals c.Id
-                                where v.IsDelete == false
+                                where v.IsDelete == false && v.Id == id
                                 select new VMTblVariant
                                 {
                                     Id = v.Id,
@@ -129,7 +129,6 @@ namespace Xpos319.api.Controllers
         }
 
         [HttpPut("Edit")]
-
         public VMResponse Edit(TblVariant data)
         {
             TblVariant dt = db.TblVariants.Where(a => a.Id == data.Id).FirstOrDefault()!;
@@ -167,7 +166,6 @@ namespace Xpos319.api.Controllers
         }
 
         [HttpDelete("Delete/{id}")]
-
         public VMResponse Delete(int id)
         {
             TblVariant dt = db.TblVariants.Where(a => a.Id == id).FirstOrDefault()!;
@@ -199,6 +197,42 @@ namespace Xpos319.api.Controllers
                 response.Success = false;
                 response.Message = "Data not found.";
             }
+            return response;
+        }
+
+        [HttpPut("MultipleDelete")]
+        public VMResponse MultipleDelete(List<int> listId)
+        {
+            if(listId.Count > 0)
+            {
+                foreach (int item in listId)
+                {
+                    TblVariant dt = db.TblVariants.Where(a => a.Id == item).FirstOrDefault()!;
+
+                    dt.IsDelete = true;
+                    dt.UpdateBy = idUser;
+                    dt.UpdateDate = DateTime.Now;
+                    db.Update(dt);
+                }
+
+                    try
+                    {
+                        db.SaveChanges();
+
+                        response.Success = true;
+                        response.Message = "Data successfully updated";
+                    }
+                    catch (Exception e)
+                    {
+
+                        response.Success = false;
+                        response.Message = "Failed update : " + e.Message;
+                    }
+                
+
+
+            }
+
             return response;
         }
     }

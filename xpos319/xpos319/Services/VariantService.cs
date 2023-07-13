@@ -69,6 +69,33 @@ namespace xpos319.Services
 
             return data;
         }
+
+        public async Task<VMResponse> MultipleDelete(List<int> listId)
+        {
+            //proses convert dari object ke string
+            string json = JsonConvert.SerializeObject(listId);
+
+            //proses mengubah string menjadi json 
+            StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+
+            //memanggil API
+            var request = await client.PutAsync(RouteApi + "apiVariant/MultipleDelete", content);
+
+            if (request.IsSuccessStatusCode)
+            {
+                //membaca respon dari API
+                var apiRespon = await request.Content.ReadAsStringAsync();
+
+                respon = JsonConvert.DeserializeObject<VMResponse>(apiRespon)!;
+            }
+            else
+            {
+                respon.Success = false;
+                respon.Message = $"{request.StatusCode} : {request.ReasonPhrase}";
+            }
+
+            return respon;
+        }
     }
 
 }

@@ -103,6 +103,32 @@ namespace xpos319.Controllers
             return View(data);
         }
 
-        
+        //tambahin suredelete
+
+        public async Task<IActionResult> MultipleDelete(List<int> listId)
+        {
+            List<string> listName = new List<string>();
+            foreach(int item in listId)
+            {
+                VMTblVariant data = await variantService.GetDataById(item);
+                listName.Add(data.NameVariant);
+            }
+
+            ViewBag.ListName = listName;
+            return PartialView();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SureMultipleDelete(List<int> listId)
+        {
+            VMResponse respon = await variantService.MultipleDelete(listId);
+
+            if (respon.Success)
+            {
+                return Json(new { dataRespon = respon });
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

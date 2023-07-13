@@ -164,7 +164,7 @@ namespace xpos319.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            TblRole data = await roleService.GetDataById(id);
+            VMTblRole data = await roleService.GetDataById(id);
             return View(data);
         }
 
